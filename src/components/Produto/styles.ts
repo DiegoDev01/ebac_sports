@@ -1,11 +1,20 @@
-import styled from 'styled-components'
+﻿import styled from 'styled-components'
 
 import { cores } from '../../styles'
 
-export const Produto = styled.div``
+export const Produto = styled.div`
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
 
 export const Titulo = styled.h3`
   min-height: 64px;
+  margin-bottom: 16px;
 `
 
 export const Capa = styled.div`
@@ -20,6 +29,7 @@ export const Capa = styled.div`
 
 export const Prices = styled.div`
   margin: 16px 0;
+  margin-bottom: auto;
   color: #fff;
 
   small {
