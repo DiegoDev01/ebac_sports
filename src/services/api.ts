@@ -2,20 +2,20 @@
 
 export interface Product {
   id: number | string
-  title?: string
-  price?: number
-  image?: string
+  nome: string
+  preco: number
+  imagem: string
   description?: string
 }
 
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fakestoreapi.com' 
+    baseUrl: '/api/ebac_sports'
   }),
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
-      query: () => '/products' 
+      query: () => '/'
     })
   })
 })

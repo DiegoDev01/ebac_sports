@@ -22,11 +22,11 @@ const Produtos = ({ favoritos, favoritar, adicionarAoCarrinho }: Props) => {
   if (isLoading) return <p>Carregando produtos...</p>
   if (isError) return <p>Erro ao carregar produtos.</p>
 
-  const produtos: Produto[] = (produtosApi || []).map((p: any) => ({
+  const produtos: Produto[] = (produtosApi || []).map((p) => ({
     id: Number(p.id),
-    nome: p.title || '',
-    preco: p.price || 0,
-    imagem: p.image || ''
+    nome: p.nome,
+    preco: p.preco,
+    imagem: p.imagem
   }))
 
   return (
