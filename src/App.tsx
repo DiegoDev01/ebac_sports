@@ -1,9 +1,10 @@
-﻿import { useState } from 'react'
+﻿import React from 'react'
 import Header from './components/Header'
 import Produtos from './containers/Produtos'
 import { GlobalStyle } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from './slices/cartSlices'
+import { toggleFavorite } from './slices/favoritesSlice'
 import type { AppDispatch, RootState } from './store'
 
 export type Produto = {
@@ -14,10 +15,9 @@ export type Produto = {
 }
 
 function App() {
-  const [favoritos, setFavoritos] = useState<Produto[]>([])
-
   const dispatch = useDispatch<AppDispatch>()
   const itensNoCarrinho = useSelector((state: RootState) => state.cart.items)
+  const favoritos = useSelector((state: RootState) => state.favorites.items)
 
   function adicionarAoCarrinho(produto: Produto) {
     if (itensNoCarrinho.find((p) => p.id === produto.id)) {
@@ -28,12 +28,7 @@ function App() {
   }
 
   function favoritar(produto: Produto) {
-    if (favoritos.find((p) => p.id === produto.id)) {
-      const favoritosSemProduto = favoritos.filter((p) => p.id !== produto.id)
-      setFavoritos(favoritosSemProduto)
-    } else {
-      setFavoritos([...favoritos, produto])
-    }
+    dispatch(toggleFavorite(produto))
   }
 
   return (
